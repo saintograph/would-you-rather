@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { ProfileCards } from '../components';
 
-class LeaderBoard extends Component {
-  render() {
-    return (
-      <div style={{ marginTop: 20 }}>
-        <ProfileCards />
-        <ProfileCards />
-        <ProfileCards />
-      </div>
-    );
-  }
+let LeaderBoard = ({ users }) => {
+  return (
+    <div style={{ marginTop: 20 }}>
+      {Object.keys(users).map((key) => {
+        return (
+          <ProfileCards
+            key={key}
+            id={users[key].id}
+            name={users[key].name}
+            image={users[key].avatarURL}
+          />
+        );
+      })}
+    </div>
+  );
 };
 
-export default LeaderBoard;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  }
+}
+
+export default LeaderBoard = connect(mapStateToProps, null)(LeaderBoard);

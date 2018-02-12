@@ -1,20 +1,20 @@
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
-const ProfileCards = () => {
-    return (
-      <Card>
-        <Card.Content>
-          <Image floated='right' size='mini' src='https://tylermcginnis.com/would-you-rather/tyler.jpg' />
-          <Card.Header>
-            Steve Sanders
-          </Card.Header>
-          <Card.Meta>
-            Friends of Elliot
-          </Card.Meta>
-        </Card.Content>
-      </Card>
-    )
+let ProfileCards = ({ name, image, id }) => {
+  return (
+    <Card>
+      <Card.Content>
+        <Image floated='right' size='mini' src={image} />
+        <Card.Header>
+          {name}
+        </Card.Header>
+        <Card.Meta>
+          {id}
+        </Card.Meta>
+      </Card.Content>
+    </Card>
+  )
 }
 
 export default ProfileCards;
