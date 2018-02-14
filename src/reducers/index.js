@@ -1,3 +1,5 @@
+import { ADD_QUESTION, GET_QUESTIONS } from '../actions'
+
 let users = {
   sarah_edo: {
     id: 'john_doe',
@@ -115,12 +117,29 @@ let questions = {
   },
 }
 
-export function counter(state = { count: 0, users, questions }, action) {
-  const count = state.count
-  switch (action.type) {
-    case 'increase':
-      return { count: count + 1 }
+
+
+
+const defaultState = {
+  users,
+  questions
+}
+
+export function usersReducer(state = defaultState.users, action) {
+  return state;
+}
+
+export function questionsReducer(state = defaultState.questions, action) {
+  switch(action.type) {
+    case 'GET_QUESTIONS':
+      return {
+        ...state,
+      }
+    case 'ADD_QUESTION': {
+      return Object.assign(questions, action.payload)
+    }
     default:
-      return state
+      return state;
   }
+  return state;
 }
